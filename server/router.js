@@ -1,9 +1,11 @@
 const express = require('express');
-const router = require('./router');
+const router = express.Router();
 
-const jwtController = require('./Controllers/userController.js')
+const userController = require('./Controllers/userController')
 
 
-router.post('/generate', jwtController.generateToken, (req, res) => {
+router.post('/generate', userController.generateToken, (req, res) => {
     res.status(200).json(res.locals.token)
 })
+
+module.exports = router;

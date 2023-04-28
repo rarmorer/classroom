@@ -1,9 +1,10 @@
 const KJUR = require('jsrsasign');
 require('dotenv').config();
+const db = require('../Models/userModels.js');
 
-const jwtController = {};
+const userController = {};
 
-jwtController.generateToken = (req, res, next) => {
+userController.generateToken = (req, res, next) => {
     console.log(process.env.SDK_KEY)
     try {
         let signature = '';
@@ -36,5 +37,15 @@ jwtController.generateToken = (req, res, next) => {
     }
 }
 
+userController.verifyUser = (req, res, next) => {
+  const {username, password} = req.body;
+  const values = [username, password];
+  const queryString = 'SELECT * FROM users WHERE username = $1 AND password = $2';
+  // db.query(queryString, values)
+  //   .then(data => {
 
-module.exports = jwtController;
+  //   })
+}
+
+
+module.exports = userController;
