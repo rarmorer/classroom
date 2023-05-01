@@ -8,10 +8,10 @@ import {Dropdown, Space, Select} from 'antd';
 const Home = () => {
 
   let navigate = useNavigate();
-  // const {memberState, memberDispatch} = useContext(UserContext);
+  const {memberState, memberDispatch} = useContext(UserContext);
   
   let meetingArgs = {...devConfig};
-  let member = '';
+
 
   const getToken = async(options) => {
     let response = await fetch('/generate', options).then(response => response.json());
@@ -22,10 +22,16 @@ const Home = () => {
     console.log(value)
     if (value === '1' || value === '3') {
       meetingArgs.roleType = 0; 
-      member = 'Student'  
+      memberDispatch({
+        type: 'UPDATE_STATUS', 
+        payload: 'Student'
+      })  
     } else {
       meetingArgs.roleType = 1;
-      member = 'Teacher'
+      memberDispatch({
+        type: 'UPDATE_STATUS', 
+        payload: 'Teacher'
+      })  
     }
 
     if (!meetingArgs.signature) {
@@ -36,7 +42,7 @@ const Home = () => {
       }
       getToken(requestOptions).then(res => meetingArgs.signature = res)
 
-    console.log(meetingArgs, 'member', member)
+    console.log('meetingArgs', meetingArgs)
     
     navigate(`/${member}Home${location.search}`)
     

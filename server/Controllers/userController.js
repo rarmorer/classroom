@@ -41,11 +41,21 @@ userController.verifyUser = (req, res, next) => {
   const {username, password} = req.body;
   const values = [username, password];
   const queryString = 'SELECT * FROM users WHERE username = $1 AND password = $2';
-  // db.query(queryString, values)
-  //   .then(data => {
-
-  //   })
-}
+  db.query(queryString, values)
+    .then(data => {
+      if (data.rows.length) {
+        res.locals.loggedIn = true;
+        res.locals.username = username;
+        return next();
+      } else {
+        res.locals.loggedIn = false;
+        res.locals.username = '';
+        return next();
+      }
+    }).catch(err => {
+      return next({err})
+    })
+};
 
 
 module.exports = userController;

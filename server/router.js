@@ -8,4 +8,8 @@ router.post('/generate', userController.generateToken, (req, res) => {
     res.status(200).json(res.locals.token)
 })
 
+router.post('/login', userController.verifyUser, (req, res) => {
+  res.status(200).send(res.locals)
+})
+
 module.exports = router;

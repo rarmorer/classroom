@@ -10,7 +10,8 @@ const TeacherHome = () => {
 
   const {memberState, memberDispatch} = useContext(UserContext);
 
-  const updateUser = (values) => {
+  const submitUserData = async (values) => {
+
     memberDispatch({
       type: 'UPDATE_USERNAME', 
       payload: { 
@@ -23,9 +24,7 @@ const TeacherHome = () => {
         username: values.password
       }
     })
-  }
 
-  const submitUserData = async () => {
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -41,8 +40,20 @@ const TeacherHome = () => {
           error: true
         }
       })
+    } else {
+      memberDispatch({
+        type: 'UPDATE_ERROR',
+        payload: {
+          error: false
+        }
+      })
+      memberDispatch({
+        type: 'UPDATE_STATUS',
+        payload: {
+          isLoggedin: true,
+        }
+      })
     }
-
   }
 
   const onSubmitFailed = () => {
@@ -50,6 +61,7 @@ const TeacherHome = () => {
   }
 
   return(
+    {if (member.isLoggedin)}
     <div>
         <Form
         name="basic"
@@ -65,7 +77,7 @@ const TeacherHome = () => {
         initialValues={{
           remember: true,
         }}
-        onFinish={updateUser}
+        onFinish={submitUserData}
         onFinishFailed={onSubmitFailed}
         autoComplete="off"
         // onFieldsChange={()=>updateInfo}

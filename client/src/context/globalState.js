@@ -13,22 +13,20 @@ export const rosterState = {
 }
 export const userReducer = (state, action) => {
     switch(action.type) {
-        case 'LOGIN': 
+        case 'UPDATE_STATUS': 
         return {
             ...state, 
             isLoggedin: true,
-            username: action.payload.username,
-            password: action.payload.password,
             status: action.payload.status
         }
-        case 'LOGOUT': 
-        return {
-            ...state, 
-            isLoggedin: false,
-            username: '',
-            password: '',
-            status: 'guest'
-        }
+        // case 'LOGOUT': 
+        // return {
+        //     ...state, 
+        //     isLoggedin: false,
+        //     username: '',
+        //     password: '',
+        //     status: 'guest'
+        // }
         case 'UPDATE_USERNAME':
         return {
           ...state, 
