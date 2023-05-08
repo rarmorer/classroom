@@ -39,15 +39,18 @@ userController.generateToken = (req, res, next) => {
 
 userController.verifyUser = (req, res, next) => {
   const {username, password} = req.body;
+  console.log('info', username, password)
   const values = [username, password];
-  const queryString = 'SELECT * FROM users WHERE username = $1 AND password = $2';
+  const queryString = 'SELECT * FROM students WHERE username = $1 AND password = $2';
   db.query(queryString, values)
     .then(data => {
+      console.log(data.rows)
       if (data.rows.length) {
         res.locals.loggedIn = true;
         res.locals.username = username;
         return next();
       } else {
+        console.log('no user')
         res.locals.loggedIn = false;
         res.locals.username = '';
         return next();

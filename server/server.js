@@ -3,13 +3,14 @@ const app = express();
 const router = require('./router');
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-
+// app.use(express.urlencoded({extended:true}));
+const cors = require("cors");
+app.use(cors());
 app.use('/', router);
 
 app.use((err, req, res, next) => {
     const defaultErr = {
-        log: 'Express error handler caught unknown middleware error', 
+        log: err, 
         status: 500, 
         message: {err: 'An error occurred'}
     };

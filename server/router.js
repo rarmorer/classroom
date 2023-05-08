@@ -9,7 +9,7 @@ router.post('/generate', userController.generateToken, (req, res) => {
 })
 
 router.post('/login', userController.verifyUser, (req, res) => {
-  res.status(200).send(res.locals)
+  res.status(200).send(res.locals.loggedIn)
 })
 
 module.exports = router;
