@@ -5,7 +5,11 @@ export const userState = {
     password: '',
     isLoggedin: false,
     status: 'guest',
-    error: false
+    error: false, 
+    meetingArgs: {},
+}
+export const initsessionState = {
+  sessionStarted: false
 }
 
 export const rosterState = {
@@ -16,17 +20,16 @@ export const userReducer = (state, action) => {
         case 'UPDATE_STATUS': 
         return {
             ...state, 
-            isLoggedin: true,
             status: action.payload.status
         }
-        // case 'LOGOUT': 
-        // return {
-        //     ...state, 
-        //     isLoggedin: false,
-        //     username: '',
-        //     password: '',
-        //     status: 'guest'
-        // }
+        case 'LOGOUT': 
+        return {
+            ...state, 
+            isLoggedin: false,
+            username: '',
+            password: '',
+            status: 'guest'
+        }
         case 'UPDATE_USERNAME':
         return {
           ...state, 
@@ -35,14 +38,29 @@ export const userReducer = (state, action) => {
         case 'UPDATE_PASSWORD': 
         return {
           ...state, 
-          username: action.payload.username
+          password: action.payload.password
         }
         case 'UPDATE_ERROR': 
         return {
           ...state,
           error: action.payload.error
         }
+        case 'UPDATE_ARGS':
+          return {
+            ...state, 
+            meetingArgs: action.payload.meetingArgs
+          }
     }
+}
+
+export const sessionReducer = (state, action) => {
+  switch(action.type) {
+    case 'UPDATE_SESSION':
+      return {
+        ...state, 
+        session: action.payload.session
+      }
+  }
 }
 
 export const rosterReducer = (state, action) => {
