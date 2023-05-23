@@ -3,13 +3,11 @@ import React, {useContext, useEffect} from 'react';
 import {useNavigate, redirect} from 'react-router-dom';
 import { devConfig } from '../dev';
 import {UserContext} from '../context/globalContext'; 
-import {StatusContext} from '../context/globalContext'; 
 import {Form, Input, Button, Checkbox, Select} from 'antd';
 
 const Home = () => {
   const {memberState, memberDispatch} = useContext(UserContext);
   const navigate = useNavigate();
-  
   const getToken = async(options) => {
     let response = await fetch('/generate', options).then(response => response.json());
     return response;

@@ -36,6 +36,7 @@ userController.generateToken = (req, res, next) => {
         return next({err})
     }
 }
+//add in teacher verification 
 
 userController.verifyUser = (req, res, next) => {
   const {username, password} = req.body;

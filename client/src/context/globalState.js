@@ -58,7 +58,7 @@ export const sessionReducer = (state, action) => {
     case 'UPDATE_SESSION':
       return {
         ...state, 
-        session: action.payload.session
+        sessionStarted: action.payload.sessionStarted
       }
   }
 }
