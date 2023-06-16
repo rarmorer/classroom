@@ -4,17 +4,15 @@ export const userState = {
     username: '',
     password: '',
     isLoggedin: false,
-    status: 'guest',
-    error: false, 
+    status: '',
+    error: true, 
     meetingArgs: {},
 }
 export const initsessionState = {
-  sessionStarted: false
+  sessionStarted: false,
+  sessionJoined: false
 }
 
-export const rosterState = {
-    roster: []
-}
 export const userReducer = (state, action) => {
     switch(action.type) {
         case 'UPDATE_STATUS': 
@@ -61,25 +59,11 @@ export const sessionReducer = (state, action) => {
         sessionStarted: action.payload.sessionStarted
       }
   }
-}
-
-export const rosterReducer = (state, action) => {
-    switch(action.type) {
-        case 'ADD':
-            return {
-                ...state, 
-                roster: [...state.roster, action.payload.roster]
-            }
-        case 'REMOVE': 
-            const studentIndex = state.findIndex((roster)=> roster.student === state.student);
-            if ((studentIndex) > 0){
-                return {
-                    ...state, 
-                    roster: state.roster.splice(studentIndex, 1)
-                }
-            }
-            else return {
-                ...state
-            }
-    }
+  switch (action.type) {
+    case 'UPDATE_JOINED':
+      return {
+        ...state, 
+        sessionJoined: action.payload.sessionJoined
+      }
+  }
 }

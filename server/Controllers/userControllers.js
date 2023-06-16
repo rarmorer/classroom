@@ -2,9 +2,9 @@ const KJUR = require('jsrsasign');
 require('dotenv').config();
 const db = require('../Models/userModels.js');
 
-const userController = {};
+const userControllers = {};
 
-userController.generateToken = (req, res, next) => {
+userControllers.generateToken = (req, res, next) => {
     console.log(process.env.SDK_KEY)
     try {
         let signature = '';
@@ -38,9 +38,8 @@ userController.generateToken = (req, res, next) => {
 }
 //add in teacher verification 
 
-userController.verifyUser = (req, res, next) => {
+userControllers.verifyUser = (req, res, next) => {
   const {username, password} = req.body;
-  console.log('info', username, password)
   const values = [username, password];
   const queryString = 'SELECT * FROM students WHERE username = $1 AND password = $2';
   db.query(queryString, values)
@@ -62,4 +61,4 @@ userController.verifyUser = (req, res, next) => {
 };
 
 
-module.exports = userController;
+module.exports = userControllers;
