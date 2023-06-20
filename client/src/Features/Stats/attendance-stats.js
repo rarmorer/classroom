@@ -6,8 +6,8 @@ import './stats.scss'
 const AttendanceStats = () => {
   const {memberState, memberDispatch} = useContext(UserContext);
   const {rosterState, setRosterState} = useContext(ClassroomContext);
-  console.log('roster recieved', rosterState[0].map((user) => user.userId))
-  console.log('meetingArgs', memberState.meetingArgs)
+
+  console.log('roster recieved', rosterState[0])
 
 
   const data = rosterState[0].map((user) => {
@@ -15,6 +15,7 @@ const AttendanceStats = () => {
       {
         name: user.name,
         userId: user.userId, 
+        //time is hard-coded for demo purposes, to display actual arrival time, access via user.TOA
         Arrived_At: '10:30AM'
       }
     )

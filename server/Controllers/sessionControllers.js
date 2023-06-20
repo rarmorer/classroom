@@ -1,5 +1,6 @@
 const axios = require('axios');
 const sessionController = {};
+const bearerToken = '';
 
 sessionController.getId = async (req, res, next) => {
   const url = 'https://api.zoom.us/v2/videosdk/sessions?type=past&from=2023-05-23&to=2023-06-15';
@@ -8,7 +9,9 @@ sessionController.getId = async (req, res, next) => {
     sessionId = await axios({
       method: 'GET', 
       url, 
-      headers: { 'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IlRNQUhXOTYxUU5Pb1dxb1J6STJnZXciLCJleHAiOjE2ODY4NDQ4MDAsImlhdCI6MTY4NTAzMTI2M30.EgNuJ_zT5kT9-bpMOVrQnwYC6HEPMb6OUdxJRtkr9Hw' }
+      header: {
+        "Authorization" : `Bearer ${bearerToken}`
+      }
     })
     sessionId = sessionId.data;
     res.locals.sessionId = sessionId.sessions[0].id;
@@ -30,7 +33,7 @@ sessionController.getUsers = async (req, res, next) => {
       method: 'GET', 
       url, 
       headers: {
-        "Authorization" : 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IlRNQUhXOTYxUU5Pb1dxb1J6STJnZXciLCJleHAiOjE2ODY4NDQ4MDAsImlhdCI6MTY4NTAzMTI2M30.EgNuJ_zT5kT9-bpMOVrQnwYC6HEPMb6OUdxJRtkr9Hw'
+        "Authorization" : `Bearer ${bearerToken}`
       }
     })
     result = result.data.users;
@@ -61,8 +64,7 @@ sessionController.getDetails = async (req, res, next) => {
       method: 'GET',
       url, 
       headers: {
-        "Authorization" : 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IlRNQUhXOTYxUU5Pb1dxb1J6STJnZXciLCJleHAiOjE2ODY4NDQ4MDAsImlhdCI6MTY4NTAzMTI2M30.EgNuJ_zT5kT9-bpMOVrQnwYC6HEPMb6OUdxJRtkr9Hw'
-      }
+        "Authorization" : `Bearer ${bearerToken}`      }
     })
     result = result.data;
     res.locals.details = result;

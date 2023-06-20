@@ -10,38 +10,31 @@ const SessionStats = (props) => {
   useEffect(() => {
     const getSessionStats = async() => {
       let details = await fetch('/details').then(res => res.json());
-      console.log('details', details)
       setStats(details)
     }
     getSessionStats();
     console.log(stats)
   }, [])
 
-  // const getSessionStats = useCallback(async () => {
-  //   let details = await fetch('/details').then(res => res.json());
-  //   console.log('details', details)
-  //   setStats(details)
-  // }, [stats])
-   
-
   console.log('sesStats', stats)
 
   const data = [
     {
-      // sessionId: stats.id,
-      startTime: '10:30AM',
-      duration: '30',
-      classCount: '15',
-      recorded: 'false'
+      sessionId: stats.id,
+      startTime: stats.start_time,
+      duration: stats.duration,
+      classCount: stats.user_count,
+      //recording must be enabled on account
+      recorded: stats.has_recording
     }
   ]
 
   const columns = [
-    // {
-    //   title: 'Session ID',
-    //   dataIndex: 'sessionId', 
-    //   key: 'sessionId'
-    // },
+    {
+      title: 'Session ID',
+      dataIndex: 'sessionId', 
+      key: 'sessionId'
+    },
     {
       title: 'Start Time', 
       dataIndex: 'startTime',

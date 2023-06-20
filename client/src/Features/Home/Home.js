@@ -6,14 +6,10 @@ import {UserContext, ClassroomContext} from '../../context/globalContext';
 import LoginForm from './LoginForm.js'
 import {Select, message} from 'antd';
 import './Home.scss'
-//if session is started, disable 'teacher' button
+
 const Home = () => {
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (JSON.parse(localStorage.getItem('Logged_In'))) {
-  //     navigate('/LandingPage')
-  //   }
-  // }, [])
+
   const {memberState, memberDispatch} = useContext(UserContext);
 
   const getToken = async(options) => {
