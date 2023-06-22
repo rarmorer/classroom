@@ -21,6 +21,4 @@ router.get('/details', sessionController.getId, sessionController.getDetails, (r
   res.status(200).send(res.locals.details)
 })
 
-// router.get('videosdk/sessions/{}/users')
-
 module.exports = router;

@@ -1,7 +1,8 @@
 const {Pool} = require('pg');
+const connectionString = ''
 
 const pool = new Pool({
-    connectionString: 'postgres://tyhubsii:YgukJpuBLT0PXJ4yTMcPcxWZ_eZEKOQl@suleiman.db.elephantsql.com/tyhubsii'
+    connectionString: connectionString
 });
 
 module.exports = {
