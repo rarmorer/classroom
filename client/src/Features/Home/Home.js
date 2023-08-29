@@ -1,14 +1,14 @@
 /* eslint-disable no-restricted-globals */
 import React, {useContext, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { devConfig } from '../../dev';
+import { devConfig } from '../../util';
 import {UserContext, ClassroomContext} from '../../context/globalContext'; 
 import LoginForm from './LoginForm.js'
 import {Select, message} from 'antd';
 import './Home.scss'
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {memberState, memberDispatch} = useContext(UserContext);
 
