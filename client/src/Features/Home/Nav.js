@@ -1,84 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { message } from 'antd';
-import {UserContext, ClientContext, MediaContext, ClassroomContext} from '../../context/globalContext'; 
-import {useNavigate, redirect} from 'react-router-dom';
-import { Menu, Image } from 'antd';
-import { Disclosure } from "@headlessui/react";
-import LetterModal from '../Teacher/letterModal';
-import ZoomVideo from '@zoom/videosdk';
+/*
+import
+initialize sesson
+join session 
+ */
 
-const NavBar = () => {
-    const {memberState, memberDispatch} = useContext(UserContext);
-    const {sessionState, sessionDispatch} = useContext(UserContext);
-    const {topic, signature, name, password, roleType} = memberState.meetingArgs;
-    const client = useContext(ClientContext);
-    const {mediaStream, setMediaStream, chatClient, setChatClient} = useContext(MediaContext);
-    const {letterModal, setLetterModal} = useContext(ClassroomContext)
-    
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-      const init = (async () => {
-        console.log('session init')
-        await client.init('en-US', 'CDN') 
-        try {
-          sessionDispatch({
-            type: 'UPDATE_SESSION',
-            payload: {
-              sessionStarted: true
-            }
-          })
-          await client.join(topic, signature, name, password);
-          const stream = client.getMediaStream();
-          setMediaStream(stream);
-          const chat = client.getChatClient();
-          setChatClient(chat)
-          let userId = client.getCurrentUserInfo().userId;
-          sessionDispatch({
-            type: 'UPDATE_JOINED',
-            payload: {
-              sessionJoined: true
-              }
-            })
-          if (memberState.meetingArgs.roleType === 1) {
-              localStorage.setItem('admin', JSON.stringify(true))
-            }
 
-        }catch(err) {
-          console.log('Error joining meeting', err);
-          message.error(err.reason)    
-        }   
-      })
-      init()
-    }, [])
-  
-    const endSession = async () => {
-      if(sessionState.sessionStarted) {
-        console.log('destroying Session')
-        ZoomVideo.destroyClient();
-        sessionDispatch({
-          type: 'UPDATE_SESSION',
-          payload: {
-            sessionStarted: false
-          }
-        })
-        navigate('/')
-      }
-    };
-    const joinVideo = () => {
-      navigate(`/${memberState.status}Video`)
-    }
-    
-    const logout = () => {
-      localStorage.clear();
-      navigate('/');
-      console.log(localStorage)
-    }  
 
-    const navigation = [
-      "Documentation",
-      "Github"
-    ];
 
     return (
       <div className="w-full">
@@ -153,7 +80,7 @@ const NavBar = () => {
           </button>
           }
           <button onClick={() => logout()} className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-              {JSON.parse(localStorage.getItem('Logged_In')) ? 'Logout' : 'Logout'}
+              {JSON.parse(localStorage.getItem('Logged_In')) ? 'Logout' : 'Login'}
           </button>
           {memberState.status === 'Teacher' && 
           <button onClick={() => setLetterModal(true)} className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">

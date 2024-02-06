@@ -1,3 +1,4 @@
+
 //config options for meeting arguments
 export const devConfig = {
     topic: 'tester topic',
@@ -9,6 +10,15 @@ export const devConfig = {
 
 
   //function for video rendering
+
+export const devConfig = {
+    topic: ' test topic',
+    name: '',
+    password: 'pass', 
+    roleType: 0, 
+  };
+
+
   export const isShallowEqual = (objA, objB) => {
     if (objA === objB) return true;
 

@@ -7,9 +7,9 @@ import { Button, Space } from 'antd';
 const StudentHome = () => {
 //figure out how to get session State to persist across componenets
 const {memberState, memberDispatch} = useContext(UserContext);
-const {sessionState, sessionDispatch} = useContext(UserContext);
+// const {sessionState, sessionDispatch} = useContext(UserContext);
 const client = useContext(ClientContext);
-const {mediaStream, setMediaStream} = useContext(MediaContext);
+// const {mediaStream, setMediaStream} = useContext(MediaContext);
 
   const {topic, signature, name, password} = memberState.meetingArgs;
   console.log('localStorage-admin', JSON.parse(localStorage.getItem('admin')))

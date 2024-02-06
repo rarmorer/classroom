@@ -8,7 +8,7 @@ import {Select, message} from 'antd';
 import './Home.scss'
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {memberState, memberDispatch} = useContext(UserContext);
 

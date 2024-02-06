@@ -1,3 +1,4 @@
+
 const KJUR = require('jsrsasign');
 require('dotenv').config();
 const db = require('../Models/userModels.js');
@@ -61,3 +62,6 @@ userControllers.verifyUser = (req, res, next) => {
 
 
 module.exports = userControllers;
+=======
+/*create generate token middleware */
+

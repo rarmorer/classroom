@@ -10,10 +10,10 @@ import ClassroomStats from '../Stats/classroom-stats';
 
 const LandingPage = () => {
   const {memberState, memberDispatch} = useContext(UserContext);
-  const {sessionState, sessionDispatch} = useContext(UserContext);
-  const {topic, signature, name, password, roleType} = memberState.meetingArgs;
-  const client = useContext(ClientContext);
-  const {mediaStream, setMediaStream} = useContext(MediaContext);
+  // const {sessionState, sessionDispatch} = useContext(UserContext);
+  // const {topic, signature, name, password, roleType} = memberState.meetingArgs;
+  // const client = useContext(ClientContext);
+  // const {mediaStream, setMediaStream} = useContext(MediaContext);
 
   return (
     <div>
