@@ -1,7 +1,7 @@
 import { useEffect, MutableRefObject } from "react";
 import { usePrevious } from "./usePrevious";
 import { usePersistFunc } from "./usePersistFunc";
-import { isShallowEqual } from "../../../dev";
+import { isShallowEqual } from "../../../util";
 
 export const useRenderVideo = (mediaStream, videoRef, layout, subscribedVid, participants, currUserId) => {
   const prevSubscribedVids = usePrevious(subscribedVid);

@@ -1,11 +1,14 @@
+//config options for meeting arguments
 export const devConfig = {
-    topic: ' test topic',
+    topic: 'tester topic',
     name: '',
     password: 'pass', 
-    roleType: 0, 
+    //roleType value of 1 signifies host, while 0 signifies pariticipant
+    roleType: 1, 
   };
 
 
+  //function for video rendering
   export const isShallowEqual = (objA, objB) => {
     if (objA === objB) return true;
 

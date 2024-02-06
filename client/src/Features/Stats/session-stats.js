@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect, useCallback } from 'react';
 import {ModalContext, ClientContext} from '../../context/globalContext'; 
 import './stats.scss'
 
-const SessionStats = (props) => {
+const SessionStats = () => {
   const client = useContext(ClientContext);
   const [stats, setStats] = useState();
 

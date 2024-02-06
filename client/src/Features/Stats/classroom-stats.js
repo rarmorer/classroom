@@ -5,7 +5,7 @@ import './stats.scss'
 
 
 const ClassroomStats = () => {
-  //data is hard-coded for demo purposes; suggest making a call to API to access database and get stored student data
+  //data is hard-coded for demo purposes; suggest making a call to API to access createdx database and get stored student data that's been manually inputted
   const data = [
     {
       name: 'Sam',

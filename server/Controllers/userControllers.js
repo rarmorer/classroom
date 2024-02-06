@@ -5,7 +5,6 @@ const db = require('../Models/userModels.js');
 const userControllers = {};
 
 userControllers.generateToken = (req, res, next) => {
-    console.log(process.env.SDK_KEY)
     try {
         let signature = '';
         const iat = Math.round(new Date().getTime() / 1000);
@@ -44,7 +43,7 @@ userControllers.verifyUser = (req, res, next) => {
   const queryString = 'SELECT * FROM students WHERE username = $1 AND password = $2';
   db.query(queryString, values)
     .then(data => {
-      console.log(data.rows)
+      console.log(data)
       if (data.rows.length) {
         res.locals.loggedIn = true;
         res.locals.username = username;

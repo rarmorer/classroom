@@ -12,7 +12,7 @@ import { useShare } from '../Hooks/useShare';
 import { useLocalVolume } from '../Hooks/useLocalVolume';
 import './video.scss';
 import VideoFooter from './VideoFooter';
-import { isShallowEqual } from '../../../dev';
+import { isShallowEqual } from '../../../util';
 import { useSizeCallback } from '../Hooks/useSizeCallback';
 
 const VideoContainer = (props) => {
