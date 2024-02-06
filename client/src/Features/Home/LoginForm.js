@@ -14,7 +14,8 @@ const LoginForm = () => {
 
   const getRoster = async() => {
     let roster = await fetch('/session').then(roster => roster.json());
-    setRosterState([...rosterState, roster]);
+    console.log('ROSTER', roster)
+    setRosterState(roster);
     }
 
   const updateUsername = (username) => {

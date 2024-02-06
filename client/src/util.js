@@ -1,3 +1,16 @@
+
+//config options for meeting arguments
+export const devConfig = {
+    topic: 'tester topic',
+    name: '',
+    password: 'pass', 
+    //roleType value of 1 signifies host, while 0 signifies pariticipant
+    roleType: 1, 
+  };
+
+
+  //function for video rendering
+
 export const devConfig = {
     topic: ' test topic',
     name: '',

@@ -23,7 +23,7 @@ const TeacherHome = () => {
     
   return (
     <div>  
-        <NavBar letter={letter}/>
+        <NavBar />
         <div className='teacherHome'>
           <div className='cards'>
             <Row gutter={16}>
