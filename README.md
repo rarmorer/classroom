@@ -47,6 +47,6 @@ To get started, make sure to fill in the necessary information in the mentioned 
 ## Customizing Your Application 
 
 You can customize the outputted data for your application in the following ways: 
-- Change the type of session data received in `sessionControllers.getId()`, by adjusting the values after the `type` keyword in the  url value (line 6). You can keep the type of data as 'past' and change the dates, or change the type to 'live' (`type=live`) for current session data. More information query parameters can be found [here](https://developers.zoom.us/docs/video-sdk/apis/#operation/sessions)
+- Change the type of session data received in `sessionController` methods, by adjusting the values after the `type` keyword in the  url value (line 6, line 29, line 61). You can keep the type of data as 'past' and change the dates, or change the type to 'live' (`type=live`) for current session data. More information query parameters can be found [here](https://developers.zoom.us/docs/video-sdk/apis/#operation/sessions)
 
 
